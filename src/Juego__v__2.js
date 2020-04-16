@@ -1,13 +1,14 @@
-const victoria = 'Ganaste!!!! ;)';
+const victoria = 'Ganaste...!';
 
-const derrota = 'Perdiste! :(';
+const derrota = 'Perdiste! ';
 
 const elementos = ['Piedra', 'Papel', 'Tijera'];
 
 const igualando = (maquina, user) => {
-    var cajitaFeliz = document.createElement('div');
+    var cajitaFeliz = document.createElement('h2');
     //creando el texto del nodo
-    var texto = document.createTextNode(`Empataron...La máquina y Tu elegido: ${maquina} = ${user}`)
+    var texto = document.createTextNode(`A ver, esta vez "Empataron". Tu y la Máquina eligieron igual: 
+    ${maquina} y ${user}; ¡Vamos Gánale! intentalo de nuevo`)
         //integrandolo a la etiqueta
     cajitaFeliz.appendChild(texto);
     //añadiendo un atributo
@@ -19,9 +20,9 @@ const igualando = (maquina, user) => {
 }
 
 const NotaGanadora = (user, maquina, victoria) => {
-    var cajitaFeliz = document.createElement('div');
+    var cajitaFeliz = document.createElement('h2');
     var texto = document.createTextNode(`Felicidades ${victoria} Escogiste ${user}
-    y la máquina perdio al elegir ${maquina}`)
+    y la máquina perdio al elegir ${maquina}. Adelante juega otra vez`)
     cajitaFeliz.appendChild(texto);
     cajitaFeliz.setAttribute('class', 'necio');
     cajitaFeliz.setAttribute('id', 'emerge');
@@ -30,11 +31,11 @@ const NotaGanadora = (user, maquina, victoria) => {
 }
 
 const NotaPerdedora = (user, maquina, derrota) => {
-    var cajitaFeliz = document.createElement('div');
+    var cajitaFeliz = document.createElement('h2');
     var texto = document.createTextNode(`Lo siento ${derrota} Escogiste ${user}
     y la máquina ganó al elegir ${maquina} Vuelve a intentarlo`)
     cajitaFeliz.appendChild(texto);
-    cajitaFeliz.setAttribute('class', 'necio');
+    cajitaFeliz.setAttribute('class', 'necio2');
     cajitaFeliz.setAttribute('id', 'emerge');
     var cont = document.getElementById('midiv-1');
     cont.appendChild(cajitaFeliz);
