@@ -1,0 +1,77 @@
+ body {
+     background-color: rgba(24, 9, 238, 0.123);
+     font-family: fantasy;
+ }
+ 
+ img {
+     height: 70vh;
+     width: 100px;
+     /* object-fit: cover; */
+     overflow: hidden;
+ }
+ 
+ .option-container {
+     display: flex;
+     flex-direction: column;
+     text-align: center;
+     align-items: center;
+     width: 200px;
+     height: 200px;
+     border-radius: 50%;
+     overflow: hidden;
+     object-fit: cover;
+ }
+ 
+ #midiv-1 {
+     display: flex;
+     flex-direction: column;
+     width: 100vw;
+     height: 100vh;
+     background: #d3d6ab;
+     align-items: center;
+     margin-left: auto;
+     margin-right: auto;
+     /* color: pink; */
+ }
+ 
+ .necio {
+     color: purple;
+ }
+ 
+ #midiv-2 {
+     display: flex;
+     flex-direction: column;
+     width: 100vw;
+     height: 100vh;
+     background: #0cd12d;
+     text-align: center;
+     /* align-items: center; */
+     margin-left: auto;
+     margin-right: auto;
+     color: darkred;
+ }
+ 
+ .mih1 {
+     color: darkred;
+     background: burlywood;
+ }
+ 
+ .piedra {
+     background: #df03fc;
+ }
+ 
+ .papel {
+     background: #02f70e;
+ }
+ 
+ .tijera {
+     background: #fc03bd;
+ }
+ 
+  .botoncito {
+     display: none;
+ }
+ .hide {
+     display:block ;
+ }
+

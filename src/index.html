@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Juego-1</title>
+    <LINK REL=StyleSheet HREF="estilos.css" TYPE="text/css">
+</head>
+
+<body>
+    <div id="midiv-1">
+        <h1> Quién ganará???? </h1>
+        <input type="button" class="botoncito" value="Vuelve intentar" id="btnIntentar" onclick="BorrarElemento(); Ocultar()">
+        <br>
+        <div class="option-container piedra" id='piedra' onclick='eleccion("Piedra")'>
+            <img src="./static/piedra.svg." alt="piedra" onclick="Ocultar()">
+        </div>
+
+        <br>
+
+        <div class="option-container papel" id='papel' onclick='eleccion("Papel")'>
+            <img src="./static/papel.svg" alt="papel"onclick="Ocultar()">
+        </div>
+
+        <br>
+
+        <div class="option-container tijera" id="tijera" onclick='eleccion("Tijera")'>
+            <img src="./static/tijera.svg" alt="tijera" onclick="Ocultar()">
+        </div>
+    </div>
+    <script src="Juego__v__2.js"></script>
+</body>
+
+</html>
