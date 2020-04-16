@@ -88,10 +88,10 @@ function elegir(eleccionUsuario) {
 
     switch (resultado) {
         case 'VICTORIA':
-            NotaGanadora(eleccionUsuario, eleccionMaquina, MENSAJE_VICTORIA);
+            NotaGanadora(eleccionUsuario, eleccionMaquina);
             break;
         case 'DERROTA':
-            NotaPerdedora(eleccionUsuario, eleccionMaquina, MENSAJE_DERROTA);
+            NotaPerdedora(eleccionUsuario, eleccionMaquina);
             break;
         case 'EMPATE':
             igualando(eleccionMaquina, eleccionUsuario);
