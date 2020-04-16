@@ -1,52 +1,5 @@
 const ELEMENTOS = ['piedra', 'papel', 'tijera'];
 
-const igualando = (maquina, user) => {
-    var cajitaFeliz = document.createElement('div');
-    //creando el texto del nodo
-    var texto = document.createTextNode(
-        `Empataron...La máquina y Tu elegido: ${maquina} = ${user}`
-    );
-    //integrandolo a la etiqueta
-    cajitaFeliz.appendChild(texto);
-    //añadiendo un atributo
-    cajitaFeliz.setAttribute('class', 'mih1');
-    cajitaFeliz.setAttribute('id', 'emerge');
-    //colocandolo en su contenedor
-    var cont = document.getElementById('midiv-1');
-    cont.appendChild(cajitaFeliz);
-};
-
-const NotaGanadora = (eleccionUsuario, eleccionMaquina) => {
-    var cajitaFeliz = document.createElement('div');
-    var texto = document.createTextNode(`Felicidades Ganaste!!!! ;) Escogiste ${eleccionUsuario}
-    y la máquina perdio al elegir ${eleccionMaquina}`);
-    cajitaFeliz.appendChild(texto);
-    cajitaFeliz.setAttribute('class', 'necio');
-    cajitaFeliz.setAttribute('id', 'emerge');
-    var cont = document.getElementById('midiv-1');
-    cont.appendChild(cajitaFeliz);
-};
-
-const NotaPerdedora = (eleccionUsuario, eleccionMaquina, derrota) => {
-    var cajitaFeliz = document.createElement('div');
-    var texto = document.createTextNode(`Lo siento Perdiste! :( Escogiste ${eleccionUsuario}
-    y la máquina ganó al elegir ${eleccionMaquina} Vuelve a intentarlo`);
-    cajitaFeliz.appendChild(texto);
-    cajitaFeliz.setAttribute('class', 'necio');
-    cajitaFeliz.setAttribute('id', 'emerge');
-    var cont = document.getElementById('midiv-1');
-    cont.appendChild(cajitaFeliz);
-};
-
-// NOTA: ESTA FUNCION DONDE SE ESTA USANDO?
-function inicio() {
-    const Piedrota = document.getElementById('piedra');
-    const Tijerota = document.getElementById('tijera');
-    const Papelote = document.getElementById('papel');
-    Piedrota.addEventListener('click', eleccion);
-    Papelote.addEventListener('click', eleccion);
-    Tijerota.addEventListener('click', eleccion);
-}
 
 const Ocultar = () => {
     const btnIntentar = document.getElementById('btnIntentar');
@@ -88,13 +41,19 @@ function elegir(eleccionUsuario) {
 
     switch (resultado) {
         case 'VICTORIA':
-            NotaGanadora(eleccionUsuario, eleccionMaquina);
+            // NotaGanadora(eleccionUsuario, eleccionMaquina);
+            console.log(`Felicidades!!! Escogiste ${eleccionUsuario}
+            y la máquina perdio al elegir ${eleccionMaquina}. Adelante juega otra vez`)
             break;
         case 'DERROTA':
-            NotaPerdedora(eleccionUsuario, eleccionMaquina);
+            // NotaPerdedora(eleccionUsuario, eleccionMaquina);
+            console.log(`Lo siento! Escogiste ${eleccionUsuario}
+            y la máquina ganó al elegir ${eleccionMaquina} Vuelve a intentarlo`)
             break;
         case 'EMPATE':
-            igualando(eleccionMaquina, eleccionUsuario);
+            // igualando(eleccionMaquina, eleccionUsuario);
+            console.log(`A ver, esta vez "Empataron". Tu y la Máquina eligieron igual: 
+            ${eleccionMaquina} y ${eleccionUsuario}; ¡Vamos Gánale! intentalo de nuevo`)
             break;
     }
 }
