@@ -1,91 +1,100 @@
-const victoria = 'Ganaste!!!! ;)';
-
-const derrota = 'Perdiste! :(';
-
-const elementos = ['Piedra', 'Papel', 'Tijera'];
+const ELEMENTOS = ["piedra", "papel", "tijera"];
 
 const igualando = (maquina, user) => {
-    var cajitaFeliz = document.createElement('div');
+    var cajitaFeliz = document.createElement("div");
     //creando el texto del nodo
-    var texto = document.createTextNode(`Empataron...La máquina y Tu elegido: ${maquina} = ${user}`)
-        //integrandolo a la etiqueta
+    var texto = document.createTextNode(
+        `Empataron...La máquina y Tu elegido: ${maquina} = ${user}`
+    );
+    //integrandolo a la etiqueta
     cajitaFeliz.appendChild(texto);
     //añadiendo un atributo
-    cajitaFeliz.setAttribute('class', 'mih1');
-    cajitaFeliz.setAttribute('id', 'emerge');
+    cajitaFeliz.setAttribute("class", "mih1");
+    cajitaFeliz.setAttribute("id", "emerge");
     //colocandolo en su contenedor
-    var cont = document.getElementById('midiv-1');
+    var cont = document.getElementById("midiv-1");
     cont.appendChild(cajitaFeliz);
-}
+};
 
-const NotaGanadora = (user, maquina, victoria) => {
-    var cajitaFeliz = document.createElement('div');
-    var texto = document.createTextNode(`Felicidades ${victoria} Escogiste ${user}
-    y la máquina perdio al elegir ${maquina}`)
+const NotaGanadora = (eleccionUsuario, eleccionMaquina) => {
+    var cajitaFeliz = document.createElement("div");
+    var texto = document.createTextNode(`Felicidades Ganaste!!!! ;) Escogiste ${eleccionUsuario}
+    y la máquina perdio al elegir ${eleccionMaquina}`);
     cajitaFeliz.appendChild(texto);
-    cajitaFeliz.setAttribute('class', 'necio');
-    cajitaFeliz.setAttribute('id', 'emerge');
-    var cont = document.getElementById('midiv-1');
+    cajitaFeliz.setAttribute("class", "necio");
+    cajitaFeliz.setAttribute("id", "emerge");
+    var cont = document.getElementById("midiv-1");
     cont.appendChild(cajitaFeliz);
-}
+};
 
-const NotaPerdedora = (user, maquina, derrota) => {
-    var cajitaFeliz = document.createElement('div');
-    var texto = document.createTextNode(`Lo siento ${derrota} Escogiste ${user}
-    y la máquina ganó al elegir ${maquina} Vuelve a intentarlo`)
+const NotaPerdedora = (eleccionUsuario, eleccionMaquina, derrota) => {
+    var cajitaFeliz = document.createElement("div");
+    var texto = document.createTextNode(`Lo siento Perdiste! :( Escogiste ${eleccionUsuario}
+    y la máquina ganó al elegir ${eleccionMaquina} Vuelve a intentarlo`);
     cajitaFeliz.appendChild(texto);
-    cajitaFeliz.setAttribute('class', 'necio');
-    cajitaFeliz.setAttribute('id', 'emerge');
-    var cont = document.getElementById('midiv-1');
+    cajitaFeliz.setAttribute("class", "necio");
+    cajitaFeliz.setAttribute("id", "emerge");
+    var cont = document.getElementById("midiv-1");
     cont.appendChild(cajitaFeliz);
-}
+};
 
+// NOTA: ESTA FUNCION DONDE SE ESTA USANDO?
 function inicio() {
-    const Piedrota = document.getElementById('piedra')
-    const Tijerota = document.getElementById('tijera')
-    const Papelote = document.getElementById('papel')
-    Piedrota.addEventListener('click', eleccion);
-    Papelote.addEventListener('click', eleccion);
-    Tijerota.addEventListener('click', eleccion);
+    const Piedrota = document.getElementById("piedra");
+    const Tijerota = document.getElementById("tijera");
+    const Papelote = document.getElementById("papel");
+    Piedrota.addEventListener("click", eleccion);
+    Papelote.addEventListener("click", eleccion);
+    Tijerota.addEventListener("click", eleccion);
 }
 
 const Ocultar = () => {
-    const btnIntentar = document.getElementById("btnIntentar")
-    btnIntentar.addEventListener('onclick', Ocultar)
-    btnIntentar.classList.add('hide')
-}
+    const btnIntentar = document.getElementById("btnIntentar");
+    btnIntentar.addEventListener("onclick", Ocultar);
+    btnIntentar.classList.add("hide");
+};
 
 const BorrarElemento = () => {
-    const elemento = document.getElementById("emerge")
-    const btnIntentar = document.getElementById("btnIntentar")
-    const pad = document.getElementById("midiv-1")
+    const elemento = document.getElementById("emerge");
+    const btnIntentar = document.getElementById("btnIntentar");
+    const pad = document.getElementById("midiv-1");
     var hijo = pad.lastChild;
-    pad.removeChild(hijo)
-}
+    pad.removeChild(hijo);
+};
 
-function eleccion(user) {
-    maquina = elementos[Math.floor(Math.random() * elementos.length)];
-    switch (true && true) {
-        case maquina === 'Piedra' && user === 'Papel':
-            NotaGanadora(user, maquina, victoria)
+const arbolDeDesiciones = {
+    piedra: {
+        papel: "DERROTA",
+        piedra: "EMPATE",
+        tijera: "VICTORIA",
+    },
+    papel: {
+        tijera: "DERROTA",
+        papel: "EMPATE",
+        piedra: "VICTORIA",
+    },
+    tijera: {
+        piedra: "DERROTA",
+        tijera: "EMPATE",
+        papel: "VICTORIA",
+    },
+};
+
+function elegir(eleccionUsuario) {
+    const eleccionMaquina =
+        ELEMENTOS[Math.floor(Math.random() * ELEMENTOS.length)];
+
+    const resultado = arbolDeDesiciones[eleccionUsuario][eleccionMaquina];
+
+    switch (resultado) {
+        case "VICTORIA":
+            NotaGanadora(eleccionUsuario, eleccionMaquina, MENSAJE_VICTORIA);
             break;
-        case maquina === 'Tijera' && user === 'Piedra':
-            NotaGanadora(user, maquina, victoria)
+        case "DERROTA":
+            NotaPerdedora(eleccionUsuario, eleccionMaquina, MENSAJE_DERROTA);
             break;
-        case maquina === 'Papel' && user === 'Tijera':
-            NotaGanadora(user, maquina, victoria)
-            break;
-        case maquina === 'Papel' && user === 'Piedra':
-            NotaPerdedora(user, maquina, derrota);
-            break;
-        case maquina === 'Tijera' && user === 'Papel':
-            NotaPerdedora(user, maquina, derrota);
-            break;
-        case maquina === 'Piedra' && user === 'Tijera':
-            NotaPerdedora(user, maquina, derrota);
-            break;
-        default:
-            igualando(maquina, user)
+        case "EMPATE":
+            igualando(eleccionMaquina, eleccionUsuario);
             break;
     }
 }
