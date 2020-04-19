@@ -1,59 +1,54 @@
-const ELEMENTOS = ['piedra', 'papel', 'tijera'];
+// Constantes
+const LOSS = 'DERROTA';
+const TIE = 'EMPATE';
+const VICTORY = 'VICTORIA';
 
+const ROCK = 'ROCK';
+const PAPER = 'PAPER';
+const SCISSORS = 'SCISSORS';
 
-const Ocultar = () => {
-    const btnIntentar = document.getElementById('btnIntentar');
-    btnIntentar.addEventListener('onclick', Ocultar);
-    btnIntentar.classList.add('hide');
+const ELEMENTS = [ROCK, PAPER, SCISSORS];
+
+const decisionTree = {
+  [ROCK]: {
+    [PAPER]: LOSS,
+    [ROCK]: TIE,
+    [SCISSORS]: VICTORY,
+  },
+  [PAPER]: {
+    [SCISSORS]: LOSS,
+    [PAPER]: TIE,
+    [ROCK]: VICTORY,
+  },
+  [SCISSORS]: {
+    [ROCK]: LOSS,
+    [SCISSORS]: TIE,
+    [PAPER]: VICTORY,
+  },
 };
 
-const BorrarElemento = () => {
-    const elemento = document.getElementById('emerge');
-    const btnIntentar = document.getElementById('btnIntentar');
-    const pad = document.getElementById('midiv-1');
-    var hijo = pad.lastChild;
-    pad.removeChild(hijo);
+const choose = (userChoice) => {
+  const machineChoice = ELEMENTS[Math.floor(Math.random() * ELEMENTS.length)];
+
+  const result = decisionTree[userChoice][machineChoice];
+
+  const textTree = {
+    [VICTORY]: `Felicidades!!! Escogiste ${userChoice} y la máquina perdio al elegir ${machineChoice}. Adelante juega otra vez`,
+    [LOSS]: `Lo siento! Escogiste ${userChoice} y la máquina ganó al elegir ${machineChoice} Vuelve a intentarlo`,
+    [TIE]: `A ver, esta vez "Empataron". Tu y la Máquina eligieron igual: ${machineChoice} y ${userChoice}; ¡Vamos Gánale! intentalo de nuevo`,
+  };
+  const resultMessage = textTree[result];
+  console.log(resultMessage);
 };
 
-const arbolDeDesiciones = {
-    piedra: {
-        papel: 'DERROTA',
-        piedra: 'EMPATE',
-        tijera: 'VICTORIA',
-    },
-    papel: {
-        tijera: 'DERROTA',
-        papel: 'EMPATE',
-        piedra: 'VICTORIA',
-    },
-    tijera: {
-        piedra: 'DERROTA',
-        tijera: 'EMPATE',
-        papel: 'VICTORIA',
-    },
-};
-
-function elegir(eleccionUsuario) {
-    const eleccionMaquina =
-        ELEMENTOS[Math.floor(Math.random() * ELEMENTOS.length)];
-
-    const resultado = arbolDeDesiciones[eleccionUsuario][eleccionMaquina];
-
-    switch (resultado) {
-        case 'VICTORIA':
-            // NotaGanadora(eleccionUsuario, eleccionMaquina);
-            console.log(`Felicidades!!! Escogiste ${eleccionUsuario}
-            y la máquina perdio al elegir ${eleccionMaquina}. Adelante juega otra vez`)
-            break;
-        case 'DERROTA':
-            // NotaPerdedora(eleccionUsuario, eleccionMaquina);
-            console.log(`Lo siento! Escogiste ${eleccionUsuario}
-            y la máquina ganó al elegir ${eleccionMaquina} Vuelve a intentarlo`)
-            break;
-        case 'EMPATE':
-            // igualando(eleccionMaquina, eleccionUsuario);
-            console.log(`A ver, esta vez "Empataron". Tu y la Máquina eligieron igual: 
-            ${eleccionMaquina} y ${eleccionUsuario}; ¡Vamos Gánale! intentalo de nuevo`)
-            break;
-    }
-}
+document.addEventListener('load', () => {
+  document.getElementById('rock').addEventListener('click', () => {
+    choose(ROCK);
+  });
+  document.getElementById('paper').addEventListener('click', () => {
+    choose(PAPER);
+  });
+  document.getElementById('scissors').addEventListener('click', () => {
+    choose(SCISSORS);
+  });
+});
