@@ -9,8 +9,6 @@ const SCISSORS = 'SCISSORS';
 
 const ELEMENTS = [ROCK, PAPER, SCISSORS];
 
-const PARAGRAPH = document.getElementById('result');
-
 const decisionTree = {
   [ROCK]: {
     [PAPER]: LOSS,
@@ -50,6 +48,7 @@ const choose = (userChoice) => {
   };
   const resultMessage = textTree[result];
   console.log(resultMessage);
+  const PARAGRAPH = document.getElementById('result');
   PARAGRAPH.innerText = resultMessage;
 };
 
