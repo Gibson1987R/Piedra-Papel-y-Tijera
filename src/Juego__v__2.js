@@ -9,6 +9,21 @@ const SCISSORS = 'SCISSORS';
 
 const ELEMENTS = [ROCK, PAPER, SCISSORS];
 
+// STORE
+let store = {
+  showedMessage: '',
+};
+
+const setShowedMessage = (newMessage) => {
+  store.showedMessage = newMessage;
+  updateView();
+};
+
+const updateView = () => {
+  const paragraph = document.getElementById('result');
+  paragraph.innerText = store.showedMessage;
+};
+
 const decisionTree = {
   [ROCK]: {
     [PAPER]: LOSS,
@@ -47,7 +62,7 @@ const choose = (userChoice) => {
     [TIE]: `A ver, esta vez "Empataron". Tu y la Máquina eligieron igual: ${machineChoiceText} y ${userChoiceText}; ¡Vamos Gánale! intentalo de nuevo`,
   };
   const resultMessage = textTree[result];
-  console.log(resultMessage);
+  setShowedMessage(resultMessage);
 };
 
 window.addEventListener('load', () => {
