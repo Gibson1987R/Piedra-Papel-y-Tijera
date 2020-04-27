@@ -19,9 +19,21 @@ const setShowedMessage = (newMessage) => {
   updateView();
 };
 
+const anuncio = document.getElementById('anuncio');
+const paragraph = document.getElementById('result');
+
+const updateView2 = () => {
+  if (anuncio.innerHTML == 'Toca aquí y vuelve a intentarlo') {
+    paragraph.innerText = ' ';
+    anuncio.innerText = '¿Ahora quién ganará?';
+  }
+};
+
 const updateView = () => {
-  const paragraph = document.getElementById('result');
   paragraph.innerText = store.showedMessage;
+  if (paragraph.innerHTML == store.showedMessage) {
+    anuncio.innerText = 'Toca aquí y vuelve a intentarlo';
+  }
 };
 
 const decisionTree = {
@@ -74,5 +86,8 @@ window.addEventListener('load', () => {
   });
   document.getElementById('scissors').addEventListener('click', () => {
     choose(SCISSORS);
+  });
+  anuncio.addEventListener('click', () => {
+    updateView2();
   });
 });
