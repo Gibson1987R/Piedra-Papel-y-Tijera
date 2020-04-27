@@ -16,74 +16,26 @@ let store = {
   letrero2:'Toca aquí y vuelve a intentarlo',
 };
 
-const anuncio = document.getElementById('anuncio');
-const paragraph = document.getElementById('result');
-
 const setShowedMessage = (newMessage) => {
-    
-  //lo que estaba antes
-  
-  // store.showedMessage = newMessage;
-  // updateView();
-
-  //lo nuevo
-
   store.showedMessage = newMessage;
   if(store.showedMessage != ''){
     updateView();
-  } else{
-    updateView2();}
-  
+  } else{updateView2();}
 };
 
-// const anuncio = document.getElementById('anuncio');
-// const paragraph = document.getElementById('result');
-
+const anuncio = document.getElementById('anuncio');
+const paragraph = document.getElementById('result');
 
 const updateView2 = () => {
-  //quita el resultado 
   paragraph.innerText = ' ';
   anuncio.innerText = store.letrero1;
- 
-  //hace dinámico el anuncio
-
-  // if (store.showedMessage != '') {
-  //   anuncio.innerText = store.letrero1;
-  // }
 };
 
 const updateView = () => {
-  //muestra el resultado
   paragraph.innerText = store.showedMessage;
   anuncio.innerText = store.letrero2;
-
-  //hace dinámico el anuncio
-
-  // if (store.showedMessage != '') {
-  //   anuncio.innerText = store.letrero2;
-  // }
 };
 
-//reserva de información
-
-// const setShowedMessage = (newMessage) => {
-//   store.showedMessage = newMessage;
-//   updateView();
-// };
-
-// const updateView2 = () => {
-//   if (anuncio.innerHTML == 'Toca aquí y vuelve a intentarlo') {
-//     paragraph.innerText = ' ';
-//     anuncio.innerText = '¿Ahora quién ganará?';
-//   }
-// };
-
-// const updateView = () => {
-//   paragraph.innerText = store.showedMessage;
-//   if (paragraph.innerHTML == store.showedMessage) {
-//     anuncio.innerText = 'Toca aquí y vuelve a intentarlo';
-//   }
-// };
 
 const decisionTree = {
   [ROCK]: {
