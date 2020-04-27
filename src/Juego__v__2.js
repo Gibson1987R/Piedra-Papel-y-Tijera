@@ -12,29 +12,64 @@ const ELEMENTS = [ROCK, PAPER, SCISSORS];
 // STORE
 let store = {
   showedMessage: '',
-};
-
-const setShowedMessage = (newMessage) => {
-  store.showedMessage = newMessage;
-  updateView();
+  letrero1:'¿Ahora quién ganará?',
+  letrero2:'Toca aquí y vuelve a intentarlo',
 };
 
 const anuncio = document.getElementById('anuncio');
 const paragraph = document.getElementById('result');
 
+const setShowedMessage = (newMessage) => {
+    
+  //lo que estaba antes
+  
+  // store.showedMessage = newMessage;
+  // updateView();
+
+  //lo nuevo
+
+  store.showedMessage = newMessage;
+  if(store.showedMessage != ''){
+    updateView();
+  } else{
+    updateView2();}
+  
+};
+
+// const anuncio = document.getElementById('anuncio');
+// const paragraph = document.getElementById('result');
+
+
 const updateView2 = () => {
-  if (store.showedMessage != '') {
-    paragraph.innerText = ' ';
-    anuncio.innerText = '¿Ahora quién ganará?';
-  }
+  //quita el resultado 
+  paragraph.innerText = ' ';
+  anuncio.innerText = store.letrero1;
+ 
+  //hace dinámico el anuncio
+
+  // if (store.showedMessage != '') {
+  //   anuncio.innerText = store.letrero1;
+  // }
 };
 
 const updateView = () => {
+  //muestra el resultado
   paragraph.innerText = store.showedMessage;
-  if (store.showedMessage != '') {
-    anuncio.innerText = 'Toca aquí y vuelve a intentarlo';
-  }
+  anuncio.innerText = store.letrero2;
+
+  //hace dinámico el anuncio
+
+  // if (store.showedMessage != '') {
+  //   anuncio.innerText = store.letrero2;
+  // }
 };
+
+//reserva de información
+
+// const setShowedMessage = (newMessage) => {
+//   store.showedMessage = newMessage;
+//   updateView();
+// };
 
 // const updateView2 = () => {
 //   if (anuncio.innerHTML == 'Toca aquí y vuelve a intentarlo') {
