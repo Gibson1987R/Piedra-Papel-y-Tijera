@@ -29,6 +29,13 @@ const updateView2 = () => {
   }
 };
 
+const updateView = () => {
+  paragraph.innerText = store.showedMessage;
+  if (store.showedMessage != '') {
+    anuncio.innerText = 'Toca aquí y vuelve a intentarlo';
+  }
+};
+
 // const updateView2 = () => {
 //   if (anuncio.innerHTML == 'Toca aquí y vuelve a intentarlo') {
 //     paragraph.innerText = ' ';
@@ -36,12 +43,12 @@ const updateView2 = () => {
 //   }
 // };
 
-const updateView = () => {
-  paragraph.innerText = store.showedMessage;
-  if (paragraph.innerHTML == store.showedMessage) {
-    anuncio.innerText = 'Toca aquí y vuelve a intentarlo';
-  }
-};
+// const updateView = () => {
+//   paragraph.innerText = store.showedMessage;
+//   if (paragraph.innerHTML == store.showedMessage) {
+//     anuncio.innerText = 'Toca aquí y vuelve a intentarlo';
+//   }
+// };
 
 const decisionTree = {
   [ROCK]: {
