@@ -23,11 +23,18 @@ const anuncio = document.getElementById('anuncio');
 const paragraph = document.getElementById('result');
 
 const updateView2 = () => {
-  if (anuncio.innerHTML == 'Toca aquí y vuelve a intentarlo') {
+  if (store.showedMessage != '') {
     paragraph.innerText = ' ';
     anuncio.innerText = '¿Ahora quién ganará?';
   }
 };
+
+// const updateView2 = () => {
+//   if (anuncio.innerHTML == 'Toca aquí y vuelve a intentarlo') {
+//     paragraph.innerText = ' ';
+//     anuncio.innerText = '¿Ahora quién ganará?';
+//   }
+// };
 
 const updateView = () => {
   paragraph.innerText = store.showedMessage;
