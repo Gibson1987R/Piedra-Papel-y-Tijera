@@ -18,9 +18,7 @@ let store = {
 
 const setShowedMessage = (newMessage) => {
   store.showedMessage = newMessage;
-  if(store.showedMessage != ''){
-    updateView();
-  } else{updateView2();}
+  (store.showedMessage != '') ? updateView() : updateView2();
 };
 
 const anuncio = document.getElementById('anuncio');
@@ -35,7 +33,6 @@ const updateView = () => {
   paragraph.innerText = store.showedMessage;
   anuncio.innerText = store.letrero2;
 };
-
 
 const decisionTree = {
   [ROCK]: {
@@ -70,8 +67,8 @@ const choose = (userChoice) => {
   const machineChoiceText = spanishChoiceTranslation[machineChoice];
 
   const textTree = {
-    [VICTORY]: `Felicidades!!! Escogiste ${userChoiceText} y la máquina perdio al elegir ${machineChoiceText}. Adelante juega otra vez`,
-    [LOSS]: `Lo siento! Escogiste ${userChoiceText} y la máquina ganó al elegir ${machineChoiceText} Vuelve a intentarlo`,
+    [VICTORY]: `Felicidades! Escogiste ${userChoiceText} y la máquina perdió al elegir ${machineChoiceText}. ¡Vamos Gánale! Juega otra vez`,
+    [LOSS]: `Lo siento! Escogiste ${userChoiceText} y la máquina ganó al elegir ${machineChoiceText} ¡No te desanimes! Vuelve a intentarlo`,
     [TIE]: `A ver, esta vez "Empataron". Tu y la Máquina eligieron igual: ${machineChoiceText} y ${userChoiceText}; ¡Vamos Gánale! intentalo de nuevo`,
   };
   const resultMessage = textTree[result];
