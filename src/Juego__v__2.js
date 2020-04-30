@@ -12,26 +12,26 @@ const ELEMENTS = [ROCK, PAPER, SCISSORS];
 // STORE
 let store = {
   showedMessage: '',
-  letrero1:'¿Ahora quién ganará?',
-  letrero2:'Toca aquí y vuelve a intentarlo',
+  anuncio: 'Prueba tu suerte',
+  // letrero2:'Toca aquí y vuelve a intentarlo',
 };
 
 const setShowedMessage = (newMessage) => {
   store.showedMessage = newMessage;
-  (store.showedMessage != '') ? updateView() : updateView2();
+  updateView();
 };
 
-const anuncio = document.getElementById('anuncio');
-const paragraph = document.getElementById('result');
-
-const updateView2 = () => {
-  paragraph.innerText = ' ';
-  anuncio.innerText = store.letrero1;
+const setAnuncio = (newAnuncio) => {
+  store.anuncio = newAnuncio;
+  updateView();
 };
 
 const updateView = () => {
+  const anuncio = document.getElementById('anuncio');
+  const paragraph = document.getElementById('result');
+
   paragraph.innerText = store.showedMessage;
-  anuncio.innerText = store.letrero2;
+  anuncio.innerText = store.anuncio;
 };
 
 const decisionTree = {
@@ -75,17 +75,30 @@ const choose = (userChoice) => {
   setShowedMessage(resultMessage);
 };
 
+const deleteShowedMessage = () => {
+  setShowedMessage('');
+  if (store.showedMessage === '') {
+    setAnuncio('¿Ahora quién ganará?');
+  }
+};
+
 window.addEventListener('load', () => {
-  document.getElementById('rock').addEventListener('click', () => {
+  const rockButton = document.getElementById('rock');
+  const paperButton = document.getElementById('paper');
+  const scissorsButton = document.getElementById('scissors');
+  const anuncio = document.getElementById('anuncio');
+
+  rockButton.addEventListener('click', () => {
     choose(ROCK);
   });
-  document.getElementById('paper').addEventListener('click', () => {
+  paperButton.addEventListener('click', () => {
     choose(PAPER);
   });
-  document.getElementById('scissors').addEventListener('click', () => {
+  scissorsButton.addEventListener('click', () => {
     choose(SCISSORS);
   });
+
   anuncio.addEventListener('click', () => {
-    updateView2();
+    deleteShowedMessage();
   });
 });
