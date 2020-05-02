@@ -18,6 +18,7 @@ let store = {
 
 const setShowedMessage = (newMessage) => {
   store.showedMessage = newMessage;
+  store.anuncio = 'Toca aquí e intentalo de nuevo'
   updateView();
 };
 
@@ -77,7 +78,7 @@ const choose = (userChoice) => {
 
 const deleteShowedMessage = () => {
   setShowedMessage('');
-  if (store.showedMessage === '') {
+  if (store.showedMessage ==='') {
     setAnuncio('¿Ahora quién ganará?');
   }
 };
