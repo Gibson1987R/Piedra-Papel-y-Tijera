@@ -12,6 +12,8 @@ const ELEMENTS = [ROCK, PAPER, SCISSORS];
 // STORE
 let store = {
   showedMessage: '',
+  anuncio: 'Prueba tu suerte',
+  // letrero2:'Toca aquí y vuelve a intentarlo',
 };
 
 const setShowedMessage = (newMessage) => {
@@ -19,9 +21,17 @@ const setShowedMessage = (newMessage) => {
   updateView();
 };
 
+const setAnuncio = (newAnuncio) => {
+  store.anuncio = newAnuncio;
+  updateView();
+};
+
 const updateView = () => {
+  const anuncio = document.getElementById('anuncio');
   const paragraph = document.getElementById('result');
+
   paragraph.innerText = store.showedMessage;
+  anuncio.innerText = store.anuncio;
 };
 
 const decisionTree = {
@@ -57,22 +67,38 @@ const choose = (userChoice) => {
   const machineChoiceText = spanishChoiceTranslation[machineChoice];
 
   const textTree = {
-    [VICTORY]: `Felicidades!!! Escogiste ${userChoiceText} y la máquina perdio al elegir ${machineChoiceText}. Adelante juega otra vez`,
-    [LOSS]: `Lo siento! Escogiste ${userChoiceText} y la máquina ganó al elegir ${machineChoiceText} Vuelve a intentarlo`,
+    [VICTORY]: `Felicidades! Escogiste ${userChoiceText} y la máquina perdió al elegir ${machineChoiceText}. ¡Vamos Gánale! Juega otra vez`,
+    [LOSS]: `Lo siento! Escogiste ${userChoiceText} y la máquina ganó al elegir ${machineChoiceText} ¡No te desanimes! Vuelve a intentarlo`,
     [TIE]: `A ver, esta vez "Empataron". Tu y la Máquina eligieron igual: ${machineChoiceText} y ${userChoiceText}; ¡Vamos Gánale! intentalo de nuevo`,
   };
   const resultMessage = textTree[result];
   setShowedMessage(resultMessage);
 };
 
+const deleteShowedMessage = () => {
+  setShowedMessage('');
+  if (store.showedMessage === '') {
+    setAnuncio('¿Ahora quién ganará?');
+  }
+};
+
 window.addEventListener('load', () => {
-  document.getElementById('rock').addEventListener('click', () => {
+  const rockButton = document.getElementById('rock');
+  const paperButton = document.getElementById('paper');
+  const scissorsButton = document.getElementById('scissors');
+  const anuncio = document.getElementById('anuncio');
+
+  rockButton.addEventListener('click', () => {
     choose(ROCK);
   });
-  document.getElementById('paper').addEventListener('click', () => {
+  paperButton.addEventListener('click', () => {
     choose(PAPER);
   });
-  document.getElementById('scissors').addEventListener('click', () => {
+  scissorsButton.addEventListener('click', () => {
     choose(SCISSORS);
+  });
+
+  anuncio.addEventListener('click', () => {
+    deleteShowedMessage();
   });
 });
