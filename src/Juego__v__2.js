@@ -88,18 +88,22 @@ const comparativa = (aviso) => {
   }
 };
 const countVictory = () => {
+  const Jugador = document.getElementById('Jugador');
   let setWin = 0;
   const countWin = (win) => {
     setWin += win;
     console.log(`Tu llevas: ${setWin}`);
+    Jugador.innerText = `${setWin}`;
   };
   return countWin;
 };
 const countLoss = () => {
+  const Maquina = document.getElementById('Maquina');
   let setOver = 0;
   const countOver = (win) => {
     setOver += win;
     console.log(`La maquina lleva: ${setOver}`);
+    Maquina.innerText = `${setOver}`;
   };
   return countOver;
 };
