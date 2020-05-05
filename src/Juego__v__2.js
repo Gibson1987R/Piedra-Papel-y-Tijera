@@ -18,6 +18,7 @@ let store = {
 
 const setShowedMessage = (newMessage) => {
   store.showedMessage = newMessage;
+  store.anuncio = 'Toca aquí e intentalo de nuevo';
   updateView();
 };
 
@@ -73,7 +74,42 @@ const choose = (userChoice) => {
   };
   const resultMessage = textTree[result];
   setShowedMessage(resultMessage);
+  comparativa(result);
 };
+
+const comparativa = (aviso) => {
+  if (aviso === VICTORY) {
+    myCountWin(1);
+  } else if (aviso === LOSS) {
+    myCountOver(1);
+  } else {
+    myCountOver(0);
+    myCountWin(0);
+  }
+};
+const countVictory = () => {
+  const Jugador = document.getElementById('Jugador');
+  let setWin = 0;
+  const countWin = (win) => {
+    setWin += win;
+    console.log(`Tu llevas: ${setWin}`);
+    Jugador.innerText = `${setWin}`;
+  };
+  return countWin;
+};
+const countLoss = () => {
+  const Maquina = document.getElementById('Maquina');
+  let setOver = 0;
+  const countOver = (win) => {
+    setOver += win;
+    console.log(`La maquina lleva: ${setOver}`);
+    Maquina.innerText = `${setOver}`;
+  };
+  return countOver;
+};
+
+let myCountWin = countVictory();
+let myCountOver = countLoss();
 
 const deleteShowedMessage = () => {
   setShowedMessage('');

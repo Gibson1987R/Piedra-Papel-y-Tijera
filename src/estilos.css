@@ -1,5 +1,5 @@
  body {
-     background-color: rgba(24, 9, 238, 0.123);
+     background-color: rgba(97, 89, 200, 0.438);
      font-family: fantasy;
  }
  
@@ -25,17 +25,30 @@
  #midiv-1 {
      display: flex;
      flex-direction: column;
-     width: 100vw;
-     height: 100vh;
-     background: #d3d6ab;
+     width: 75vw;
+     height: 85vh;
+     background: #cbceb3;
      align-items: center;
      margin-left: auto;
      margin-right: auto;
+     text-align: center;
+     border-radius: 15%;
      /* color: pink; */
  }
  
  .necio {
-     color: purple;
+     color: blue;
+     text-align: center;
+ }
+ 
+ .necio2 {
+     color: red;
+     text-align: center;
+ }
+ 
+ .mih1 h1{
+     /* color: rgb(36, 95, 13); */
+     text-align: center;
  }
  
  #midiv-2 {
@@ -51,27 +64,38 @@
      color: darkred;
  }
  
- .mih1 {
-     color: darkred;
-     background: burlywood;
- }
- 
  .piedra {
-     background: #df03fc;
+     background: #ece258;
  }
  
  .papel {
-     background: #02f70e;
+     background: #eafaf7;
  }
  
  .tijera {
      background: #fc03bd;
  }
- 
-  .botoncito {
-     display: none;
+ .container{
+     flex-direction: row;
+     display: flex;
+     justify-content: center;
  }
- .hide {
-     display:block ;
+ .botoncito {
+     justify-content: center;
+     /* align-items: flex-end; */
+     display: flex;
+     border-radius: 50%;
+     margin: 10px;
  }
 
+ .botoncito img {
+     height: 60px;
+ }
+ 
+ .hide {
+     display: block;
+ }
+
+ #anuncio h2 {
+    margin: 5px;
+ }
